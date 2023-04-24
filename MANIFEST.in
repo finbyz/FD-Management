@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include fd_management *.css
+recursive-include fd_management *.csv
+recursive-include fd_management *.html
+recursive-include fd_management *.ico
+recursive-include fd_management *.js
+recursive-include fd_management *.json
+recursive-include fd_management *.md
+recursive-include fd_management *.png
+recursive-include fd_management *.py
+recursive-include fd_management *.svg
+recursive-include fd_management *.txt
+recursive-exclude fd_management *.pyc
