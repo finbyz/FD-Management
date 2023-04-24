@@ -20,8 +20,7 @@
   "matured",
   "company",
   "matured_amount__1",
-  "interest_amount",
-  "amended_from"
+  "interest_amount"
  ],
  "fields": [
   {
@@ -67,12 +66,14 @@
    "label": "Rate Of Interest"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "renewal",
    "fieldtype": "Check",
    "label": "Renewal"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "matured",
    "fieldtype": "Check",
@@ -99,21 +100,12 @@
    "fieldname": "matured_amount__1",
    "fieldtype": "Data",
    "label": "Matured Amount _1"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Fd Management",
-   "print_hide": 1,
-   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-24 14:41:17.315732",
+ "modified": "2023-04-24 14:54:29.350553",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "Fd Management",
