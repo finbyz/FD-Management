@@ -1,8 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:fd_number",
- "creation": "2023-04-24 12:53:47.732694",
+ "creation": "2023-04-24 16:19:47.490961",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -32,6 +31,12 @@
    "label": "Posting Date"
   },
   {
+   "fieldname": "fd_number",
+   "fieldtype": "Data",
+   "label": "FD Number",
+   "unique": 1
+  },
+  {
    "fieldname": "bank_account",
    "fieldtype": "Link",
    "label": "Bank Account",
@@ -40,7 +45,13 @@
   {
    "fieldname": "fd_account",
    "fieldtype": "Link",
-   "label": "FD Account ",
+   "label": "FD Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "interest_account",
+   "fieldtype": "Link",
+   "label": "Interest Account",
    "options": "Account"
   },
   {
@@ -69,14 +80,12 @@
    "label": "Rate Of Interest"
   },
   {
-   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "renewal",
    "fieldtype": "Check",
    "label": "Renewal"
   },
   {
-   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "matured",
    "fieldtype": "Check",
@@ -89,23 +98,16 @@
    "options": "Company"
   },
   {
-   "fieldname": "interest_account",
-   "fieldtype": "Link",
-   "label": "Interest Account",
-   "options": "Account"
+   "fieldname": "matured_amount__1",
+   "fieldtype": "Currency",
+   "label": "Matured Amount _1",
+   "set_only_once": 1
   },
   {
-   "allow_on_submit": 1,
    "fieldname": "interest_amount",
    "fieldtype": "Currency",
    "label": "Interest Amount",
    "set_only_once": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "matured_amount__1",
-   "fieldtype": "Currency",
-   "label": "Matured Amount _1"
   },
   {
    "fieldname": "amended_from",
@@ -115,22 +117,15 @@
    "options": "FD Management",
    "print_hide": 1,
    "read_only": 1
-  },
-  {
-   "fieldname": "fd_number",
-   "fieldtype": "Data",
-   "label": "FD Number",
-   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-24 15:51:44.725029",
+ "modified": "2023-04-24 16:26:35.841052",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "FD Management",
- "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

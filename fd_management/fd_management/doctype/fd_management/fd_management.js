@@ -1,7 +1,7 @@
 // Copyright (c) 2023, finbyx and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Fd Management', {
+frappe.ui.form.on('FD Management', {
 	refresh: function(frm) {
 		frm.set_query('interest_account', function(doc) {
 				return {
@@ -35,4 +35,4 @@ frappe.ui.form.on('Fd Management', {
 		}
 		frm.set_value('interest_amount',(frm.doc.matured_amount__1 - frm.doc.fd_amount));
 	}
-});
+});	

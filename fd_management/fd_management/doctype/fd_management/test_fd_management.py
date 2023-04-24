@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestFdManagement(FrappeTestCase):
+class TestFDManagement(FrappeTestCase):
 	pass
