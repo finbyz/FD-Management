@@ -5,6 +5,9 @@ import frappe
 from frappe.model.document import Document
 
 class FdManagement(Document):
+    def validate(self):
+        if self.matured_amount< self.fd_amount:
+            frappe.throw("Matured Amount Can Not be less then  FD Amount")
     def on_submit(self):
         jv = frappe.new_doc("Journal Entry")
         jv.posting_date = self.posting_date
@@ -23,6 +26,8 @@ class FdManagement(Document):
                 
     def on_update_after_submit(self):
         if self.matured == 1 :
+            if self.matured_amount__1 < self.fd_amount:
+                frappe.throw("Matured Amount Can Not be less then  FD Amount")
             jv = frappe.new_doc("Journal Entry")
             jv.posting_date = self.posting_date
             jv.voucher_type = "Journal Entry"
