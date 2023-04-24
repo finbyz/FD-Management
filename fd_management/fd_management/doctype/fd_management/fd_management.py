@@ -24,7 +24,7 @@ class FdManagement(Document):
     def on_update_after_submit(self):
         if self.matured == 1 :
             jv = frappe.new_doc("Journal Entry")
-            jv.posting_date = self.return_date
+            jv.posting_date = self.posting_date
             jv.voucher_type = "Journal Entry"
             jv.company = self.company
             jv.append('accounts', {
