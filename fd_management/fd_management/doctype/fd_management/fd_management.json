@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-24 12:53:47.732694",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "bank_account",
+  "fd_account",
+  "interest_account",
+  "fd_start_date",
+  "fd_amount",
+  "matured_date",
+  "matured_amount",
+  "rate_of_interest",
+  "renewal",
+  "matured",
+  "company",
+  "matured_amount__1",
+  "interest_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "fd_account",
+   "fieldtype": "Link",
+   "label": "FD Account ",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "fd_start_date",
+   "fieldtype": "Date",
+   "label": "FD Start Date"
+  },
+  {
+   "fieldname": "fd_amount",
+   "fieldtype": "Currency",
+   "label": "FD Amount"
+  },
+  {
+   "fieldname": "matured_date",
+   "fieldtype": "Date",
+   "label": "Matured Date"
+  },
+  {
+   "fieldname": "matured_amount",
+   "fieldtype": "Date",
+   "label": "Matured Amount"
+  },
+  {
+   "fieldname": "rate_of_interest",
+   "fieldtype": "Percent",
+   "label": "Rate Of Interest"
+  },
+  {
+   "default": "0",
+   "fieldname": "renewal",
+   "fieldtype": "Check",
+   "label": "Renewal"
+  },
+  {
+   "default": "0",
+   "fieldname": "matured",
+   "fieldtype": "Check",
+   "label": "Matured"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "interest_account",
+   "fieldtype": "Link",
+   "label": "Interest Account",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "interest_amount",
+   "fieldtype": "Currency",
+   "label": "Interest Amount"
+  },
+  {
+   "fieldname": "matured_amount__1",
+   "fieldtype": "Data",
+   "label": "Matured Amount _1"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-04-24 14:17:37.224494",
+ "modified_by": "Administrator",
+ "module": "Fd Management",
+ "name": "Fd Management",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
