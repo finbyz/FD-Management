@@ -20,7 +20,8 @@
   "matured",
   "company",
   "matured_amount__1",
-  "interest_amount"
+  "interest_amount",
+  "amended_from"
  ],
  "fields": [
   {
@@ -32,13 +33,13 @@
    "fieldname": "bank_account",
    "fieldtype": "Link",
    "label": "Bank Account",
-   "options": "Bank Account"
+   "options": "Account"
   },
   {
    "fieldname": "fd_account",
    "fieldtype": "Link",
    "label": "FD Account ",
-   "options": "Bank Account"
+   "options": "Account"
   },
   {
    "fieldname": "fd_start_date",
@@ -57,7 +58,7 @@
   },
   {
    "fieldname": "matured_amount",
-   "fieldtype": "Date",
+   "fieldtype": "Currency",
    "label": "Matured Amount"
   },
   {
@@ -87,7 +88,7 @@
    "fieldname": "interest_account",
    "fieldtype": "Link",
    "label": "Interest Account",
-   "options": "Bank Account"
+   "options": "Account"
   },
   {
    "fieldname": "interest_amount",
@@ -98,12 +99,21 @@
    "fieldname": "matured_amount__1",
    "fieldtype": "Data",
    "label": "Matured Amount _1"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Fd Management",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-24 14:17:37.224494",
+ "modified": "2023-04-24 14:41:17.315732",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "Fd Management",
