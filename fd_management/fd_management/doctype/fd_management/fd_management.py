@@ -47,8 +47,7 @@ class FDManagement(Document):
 			jv.save()
 			jv.submit()
 			frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
+			frappe.db.set_value('FD Management', self.name, 'status', 'Matured')
 			frappe.db.commit()
-			# self.matured__jv = jv.name
-			self.db_set("status", "Matured")
 		if self.matured__jv:
-			frappe.throw("edd")
+			frappe.throw("FD is already Matured </br> <b>#jv.name</b> ")
