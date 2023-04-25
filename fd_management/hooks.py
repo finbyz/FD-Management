@@ -109,6 +109,12 @@ app_license = "MIT"
 #		"on_trash": "method"
 #	}
 # }
+doc_events = {
+        "Journal Entry":
+        {
+            "on_cancel": "fd_management.fd_management.doctype.journal_entry.on_cancel"
+        },
+    }
 
 # Scheduled Tasks
 # ---------------

@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:fd_number",
  "creation": "2023-04-24 16:19:47.490961",
  "default_view": "List",
  "doctype": "DocType",
@@ -21,7 +22,9 @@
   "matured",
   "company",
   "matured_amount__1",
-  "interest_amount"
+  "interest_amount",
+  "matured__jv",
+  "amended_from"
  ],
  "fields": [
   {
@@ -109,15 +112,32 @@
    "fieldname": "interest_amount",
    "fieldtype": "Currency",
    "label": "Interest Amount"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "matured__jv",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Matured  JV"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "FD Management",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-24 07:16:01.277807",
+ "modified": "2023-04-24 07:54:30.819724",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "FD Management",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

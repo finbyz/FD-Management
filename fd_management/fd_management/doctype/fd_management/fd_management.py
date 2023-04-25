@@ -25,7 +25,7 @@ class FDManagement(Document):
 		jv.submit()
 				
 	def on_update_after_submit(self):
-		if self.matured == 1 :
+		if self.matured == 1 and not self.matured__jv :
 			# if self.matured_amount__1 < self.fd_amount:
 			#     frappe.throw("Matured Amount Can Not be less then  FD Amount")
 			jv = frappe.new_doc("Journal Entry")
@@ -46,4 +46,9 @@ class FDManagement(Document):
 			})
 			jv.save()
 			jv.submit()
+			frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
+			frappe.db.commit()
+			# self.matured__jv = jv.name
 			# self.db_set("status", "Matured")
+		if self.matured__jv:
+			frappe.throw("edd")
