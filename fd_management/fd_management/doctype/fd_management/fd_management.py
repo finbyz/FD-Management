@@ -49,6 +49,6 @@ class FDManagement(Document):
 			frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
 			frappe.db.commit()
 			# self.matured__jv = jv.name
-			# self.db_set("status", "Matured")
+			self.db_set("status", "Matured")
 		if self.matured__jv:
 			frappe.throw("edd")

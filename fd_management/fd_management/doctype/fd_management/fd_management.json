@@ -24,7 +24,7 @@
   "matured_amount__1",
   "interest_amount",
   "matured__jv",
-  "amended_from"
+  "status"
  ],
  "fields": [
   {
@@ -121,19 +121,20 @@
    "label": "Matured  JV"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "FD Management",
-   "print_hide": 1,
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Running\nMatured\nRenewal",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-24 07:54:30.819724",
+ "modified": "2023-04-25 10:26:04.503901",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "FD Management",
