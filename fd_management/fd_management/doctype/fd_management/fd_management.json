@@ -1,33 +1,40 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:fd_number",
+ "autoname": "FD-.#####",
  "creation": "2023-04-24 16:19:47.490961",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "posting_date",
   "fd_number",
-  "bank_account",
+  "posting_date",
   "fd_account",
-  "interest_account",
   "fd_start_date",
-  "fd_amount",
   "matured_date",
-  "matured_amount",
-  "rate_of_interest",
-  "renewal",
   "matured",
+  "column_break_van5s",
   "company",
-  "matured_amount__1",
-  "interest_amount",
+  "bank_account",
+  "interest_account",
+  "fd_amount",
+  "maturity_amount",
+  "renewal",
+  "matured_section_section",
+  "matured_amount",
   "matured__jv",
-  "status"
+  "previous_fd",
+  "renewal_section_section",
+  "renewal_amount",
+  "renewal_interest_amount",
+  "interest_amount",
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
+   "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "label": "Posting Date"
@@ -35,8 +42,7 @@
   {
    "fieldname": "fd_number",
    "fieldtype": "Data",
-   "label": "FD Number",
-   "unique": 1
+   "label": "FD Number"
   },
   {
    "fieldname": "bank_account",
@@ -72,14 +78,11 @@
    "label": "Matured Date"
   },
   {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.matured==1",
    "fieldname": "matured_amount",
    "fieldtype": "Currency",
-   "label": "Matured Amount"
-  },
-  {
-   "fieldname": "rate_of_interest",
-   "fieldtype": "Percent",
-   "label": "Rate Of Interest"
+   "label": "Matured Amount "
   },
   {
    "allow_on_submit": 1,
@@ -103,15 +106,11 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "matured_amount__1",
-   "fieldtype": "Currency",
-   "label": "Matured Amount _1"
-  },
-  {
-   "allow_on_submit": 1,
+   "depends_on": "eval:doc.matured==1",
    "fieldname": "interest_amount",
    "fieldtype": "Currency",
-   "label": "Interest Amount"
+   "label": "Interest Amount",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
@@ -129,16 +128,64 @@
    "label": "Status",
    "options": "Running\nMatured\nRenewal",
    "read_only": 1
+  },
+  {
+   "fieldname": "previous_fd",
+   "fieldtype": "Link",
+   "label": "Previous FD",
+   "options": "FD Management",
+   "read_only": 1
+  },
+  {
+   "fieldname": "maturity_amount",
+   "fieldtype": "Currency",
+   "label": "Maturity Amount"
+  },
+  {
+   "depends_on": "eval:doc.renewal==1",
+   "fieldname": "renewal_amount",
+   "fieldtype": "Currency",
+   "label": "Renewal Amount"
+  },
+  {
+   "depends_on": "eval:doc.renewal==1",
+   "fieldname": "renewal_interest_amount",
+   "fieldtype": "Currency",
+   "label": "Renewal Interest Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "FD Management",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_van5s",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "matured_section_section",
+   "fieldtype": "Section Break",
+   "label": "Matured Section"
+  },
+  {
+   "fieldname": "renewal_section_section",
+   "fieldtype": "Section Break",
+   "label": "Renewal Section"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-25 10:26:04.503901",
+ "modified": "2023-04-26 10:42:10.305461",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "FD Management",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

@@ -29,10 +29,30 @@ frappe.ui.form.on('FD Management', {
 		});
 	},
 	
-	matured_amount__1:function(frm){
-		if(frm.doc.matured_amount__1 < frm.doc.fd_amount){
-			frappe.throw("Matured Amount Can Not be less then  FD Amount")
+	matured:function(frm){
+		if(frm.doc.matured==1){
+			if(frm.doc.maturity_amount){
+				frm.set_value('matured_amount',frm.doc.maturity_amount);
+				frm.set_value('interest_amount',(frm.doc.matured_amount - frm.doc.fd_amount));
+			}
 		}
-		frm.set_value('interest_amount',(frm.doc.matured_amount__1 - frm.doc.fd_amount));
-	}
+	},
+	matured_amount:function(frm)
+	{
+		frm.set_value('interest_amount',(frm.doc.matured_amount - frm.doc.fd_amount));
+	},
+	renewal:function(frm){
+		if(frm.doc.renewal==1){
+			if(frm.doc.maturity_amount){
+				frm.set_value('renewal_amount',frm.doc.maturity_amount);
+				frm.set_value('renewal_interest_amount',(frm.doc.renewal_amount - frm.doc.fd_amount));
+			}
+		}
+	},
+	renewal_amount:function(frm)
+	{
+		frm.set_value('renewal_interest_amount',(frm.doc.renewal_amount - frm.doc.fd_amount));
+	},
+
+
 });	
