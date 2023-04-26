@@ -15,6 +15,10 @@ def on_cancel(self, method):
             fd_doc.db_set('status', 'Running')
     if frappe.db.exists("FD Management", {"reference_jv": self.name}):
         fd_doc = frappe.get_doc('FD Management',{'reference_jv': self.name})
+        if fd_doc.previous_fd:
+            frappe.db.set_value('FD Management', fd_doc.previous_fd, 'renewal', 0)
+            frappe.db.set_value('FD Management', fd_doc.previous_fd, 'status', 'Padding')
+            frappe.db.commit()
         try:
             fd_doc.cancel()
         except Exception as e:

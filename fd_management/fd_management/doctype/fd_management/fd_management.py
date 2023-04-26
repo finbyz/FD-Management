@@ -110,9 +110,12 @@ class FDManagement(Document):
 			fd.interest_account = self.interest_account
 			fd.fd_start_date = utils.today()
 			fd.fd_amount = self.renewal_amount
+			fd.maturity_amount = self.new_maturity_amount
+			fd.matured_date = self.new_maturity_date
 			fd.previous_fd = self.name
 			try:
 				fd.save()
+				fd.submit()
 			except Exception as e:
 				frappe.throw(str(e))
 			else:
