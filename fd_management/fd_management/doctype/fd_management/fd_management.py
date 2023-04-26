@@ -4,11 +4,13 @@
 import frappe
 from frappe.model.document import Document
 from frappe.utils import get_url_to_form
+from frappe import utils
 
 class FDManagement(Document):
 	def validate(self):
-		if self.maturity_amount < self.fd_amount:
-			frappe.throw("Matured Amount Can Not be less then  FD Amount")
+		if self.maturity_amount:
+			if self.maturity_amount < self.fd_amount:
+				frappe.throw("Matured Amount Can Not be less then  FD Amount")
 	def on_submit(self):
 		if not self.previous_fd:
 			jv = frappe.new_doc("Journal Entry")
@@ -42,11 +44,11 @@ class FDManagement(Document):
 			})
 			jv.append('accounts', {
 				'account': self.fd_account,
-				'credit_in_account_currency':self.renewal_amount
+				'credit_in_account_currency': frappe.db.get_value("FD Management",self.previous_fd,'fd_amount')
 			})
 			jv.append('accounts', {
 				'account': self.interest_account,
-				'credit_in_account_currency':self.renewal_interest_amount
+				'credit_in_account_currency':frappe.db.get_value("FD Management",self.previous_fd,'renewal_interest_amount')
 			})  
 			try:
 				jv.save()
@@ -85,11 +87,11 @@ class FDManagement(Document):
 			else:
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
-			# frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
-			# frappe.db.set_value('FD Management', self.name, 'status', 'Matured')
-			# frappe.db.commit()
-			self.db_set('matured__jv', jv.name)
-			self.db_set('status', 'Matured')
+			frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
+			frappe.db.set_value('FD Management', self.name, 'status', 'Matured')
+			frappe.db.commit()
+			# self.db_set('matured__jv', jv.name)
+			# self.db_set('status', 'Matured')
 		if self.matured__jv:
 			frappe.throw(f"FD is already Matured </br> <b>#{self.matured__jv}</b> ")
 		if self.matured == 1 and self.renewal == 1:
@@ -101,6 +103,7 @@ class FDManagement(Document):
 			fd.bank_account = self.bank_account
 			fd.fd_account = self.fd_account
 			fd.interest_account = self.interest_account
+			fd.fd_start_date = utils.today()
 			fd.fd_amount = self.renewal_amount
 			fd.previous_fd = self.name
 			try:

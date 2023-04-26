@@ -14,6 +14,7 @@
   "fd_start_date",
   "matured_date",
   "matured",
+  "previous_fd",
   "column_break_van5s",
   "company",
   "bank_account",
@@ -21,14 +22,16 @@
   "fd_amount",
   "maturity_amount",
   "renewal",
+  "reference_jv",
   "matured_section_section",
   "matured_amount",
+  "column_break_ug5eq",
+  "interest_amount",
   "matured__jv",
-  "previous_fd",
   "renewal_section_section",
   "renewal_amount",
+  "column_break_kixui",
   "renewal_interest_amount",
-  "interest_amount",
   "status",
   "amended_from"
  ],
@@ -142,25 +145,18 @@
    "label": "Maturity Amount"
   },
   {
+   "allow_on_submit": 1,
    "depends_on": "eval:doc.renewal==1",
    "fieldname": "renewal_amount",
    "fieldtype": "Currency",
    "label": "Renewal Amount"
   },
   {
+   "allow_on_submit": 1,
    "depends_on": "eval:doc.renewal==1",
    "fieldname": "renewal_interest_amount",
    "fieldtype": "Currency",
    "label": "Renewal Interest Amount",
-   "read_only": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "FD Management",
-   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -176,12 +172,37 @@
    "fieldname": "renewal_section_section",
    "fieldtype": "Section Break",
    "label": "Renewal Section"
+  },
+  {
+   "fieldname": "column_break_ug5eq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kixui",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "FD Management",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "reference_jv",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Reference JV",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-26 10:42:10.305461",
+ "modified": "2023-04-26 01:48:27.264883",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "FD Management",
