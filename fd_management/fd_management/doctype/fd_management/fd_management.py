@@ -33,6 +33,8 @@ class FDManagement(Document):
 			else:
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
+			frappe.db.set_value('FD Management', self.name, 'reference_jv', jv.name)
+			frappe.db.commit()
 		if self.previous_fd:
 			jv = frappe.new_doc("Journal Entry")
 			jv.posting_date = self.posting_date
@@ -58,7 +60,9 @@ class FDManagement(Document):
 			else:
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
-				
+			frappe.db.set_value('FD Management', self.name, 'reference_jv', jv.name)
+			frappe.db.commit()
+
 	def on_update_after_submit(self):
 		if self.matured == 1 and not self.matured__jv :
 			# if self.matured_amount < self.fd_amount:
