@@ -64,6 +64,8 @@ class FDManagement(Document):
 			frappe.db.commit()
 
 	def on_update_after_submit(self):
+		if self.matured__jv:
+			frappe.throw(f"FD is already Matured </br> <b>#{self.matured__jv}</b> ")
 		if self.matured == 1 and not self.matured__jv :
 			# if self.matured_amount < self.fd_amount:
 			#     frappe.throw("Matured Amount Can Not be less then  FD Amount")
@@ -91,13 +93,12 @@ class FDManagement(Document):
 			else:
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
-			frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
-			frappe.db.set_value('FD Management', self.name, 'status', 'Matured')
-			frappe.db.commit()
-			# self.db_set('matured__jv', jv.name)
-			# self.db_set('status', 'Matured')
-		if self.matured__jv:
-			frappe.throw(f"FD is already Matured </br> <b>#{self.matured__jv}</b> ")
+			# frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
+			# frappe.db.set_value('FD Management', self.name, 'status', 'Matured')
+			# frappe.db.commit()
+			self.db_set('matured__jv', jv.name)
+			self.db_set('status', 'Matured')
+		
 		if self.matured == 1 and self.renewal == 1:
 			frappe.throw("FD is Not Update Renewal and Matured  at a same time")
 		if self.renewal == 1:
