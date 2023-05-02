@@ -125,3 +125,4 @@ class FDManagement(Document):
 				url = get_url_to_form("FD Management",fd.name)
 				frappe.msgprint("FD Management - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(fd.name)))
 			self.db_set('status', 'Renewal')
+			self.db_set('renewal_jv', jv.name)

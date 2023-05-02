@@ -98,8 +98,7 @@
    "fieldname": "renewal",
    "fieldtype": "Check",
    "label": "Renewal",
-   "no_copy": 1,
-   "read_only": 1
+   "no_copy": 1
   },
   {
    "allow_on_submit": 1,
@@ -240,7 +239,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-02 12:24:25.339715",
+ "modified": "2023-05-02 12:50:55.296674",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "FD Management",
