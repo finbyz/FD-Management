@@ -35,8 +35,7 @@
   "renewal_interest_amount",
   "new_maturity_amount",
   "renewal_jv",
-  "status",
-  "amended_from"
+  "status"
  ],
  "fields": [
   {
@@ -109,6 +108,7 @@
    "fieldname": "matured",
    "fieldtype": "Check",
    "label": "Matured",
+   "no_copy": 1,
    "read_only_depends_on": "eval:doc.status=='Matured'"
   },
   {
@@ -141,6 +141,7 @@
    "hidden": 1,
    "in_list_view": 1,
    "label": "Status",
+   "no_copy": 1,
    "options": "Running\nMatured\nRenewal\nPadding",
    "read_only": 1
   },
@@ -148,6 +149,7 @@
    "fieldname": "previous_fd",
    "fieldtype": "Link",
    "label": "Previous FD",
+   "no_copy": 1,
    "options": "FD Management",
    "read_only": 1
   },
@@ -225,15 +227,6 @@
    "read_only_depends_on": "eval:doc.status=='Renewal'"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "FD Management",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
    "allow_on_submit": 1,
    "fieldname": "renewal_jv",
    "fieldtype": "Data",
@@ -245,7 +238,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-02 04:32:12.698436",
+ "modified": "2023-05-02 14:22:13.542441",
  "modified_by": "Administrator",
  "module": "Fd Management",
  "name": "FD Management",
