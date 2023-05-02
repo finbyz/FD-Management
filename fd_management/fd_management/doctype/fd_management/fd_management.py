@@ -62,6 +62,7 @@ class FDManagement(Document):
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
 			frappe.db.set_value('FD Management', self.name, 'reference_jv', jv.name)
+			frappe.db.set_value('FD Management', self.previous_fd, 'renewal_jv', jv.name)
 			frappe.db.commit()
 
 	def on_update_after_submit(self):
@@ -125,4 +126,4 @@ class FDManagement(Document):
 				url = get_url_to_form("FD Management",fd.name)
 				frappe.msgprint("FD Management - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(fd.name)))
 			self.db_set('status', 'Renewal')
-			self.db_set('renewal_jv', jv.name)
+			
