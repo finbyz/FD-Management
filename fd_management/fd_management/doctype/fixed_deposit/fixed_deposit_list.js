@@ -9,8 +9,8 @@ frappe.listview_settings['Fixed Deposit'] = {
 		if(doc.status === "Matured"){
             return [__("Matured"), "red", "status,=,Matured"];
         }
-		if(doc.status === "Renewal"){
-            return [__("Renewal"), "blue", "status,=,Renewal"];
+		if(doc.status === "Renewed"){
+            return [__("Renewed"), "blue", "status,=,Renewed"];
         }
 		if(doc.status === "Padding"){
             return [__("Padding"), "green", "status,=,Padding"];

@@ -27,11 +27,11 @@ frappe.ui.form.on('Fixed Deposit', {
 				}
 			};
 		});
-		if(frm.doc.status == 'Renewal'){
+		if(frm.doc.status == 'Renewed'){
 			frm.set_df_property('matured', 'hidden', 1)
 		}
 		if(frm.doc.status == 'Matured'){
-			frm.set_df_property('renewal', 'hidden', 1)
+			frm.set_df_property('renewed', 'hidden', 1)
 		}
 	},
 	
@@ -41,16 +41,16 @@ frappe.ui.form.on('Fixed Deposit', {
 				frm.set_value('matured_amount',frm.doc.maturity_amount);
 				frm.set_value('interest_amount',(frm.doc.matured_amount - frm.doc.fd_amount));
 			}
-			if(frm.doc.renewal==1)
-				frm.set_value('renewal',0);
+			if(frm.doc.renewed==1)
+				frm.set_value('renewed',0);
 		}
 	},
 	matured_amount:function(frm)
 	{
 		frm.set_value('interest_amount',(frm.doc.matured_amount - frm.doc.fd_amount));
 	},
-	renewal:function(frm){
-		if(frm.doc.renewal==1){
+	renewed:function(frm){
+		if(frm.doc.renewed==1){
 			if(frm.doc.maturity_amount){
 				frm.set_value('renewal_amount',frm.doc.maturity_amount);
 				frm.set_value('renewal_interest_amount',(frm.doc.renewal_amount - frm.doc.fd_amount));

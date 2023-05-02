@@ -125,4 +125,4 @@ class FixedDeposit(Document):
 			else:
 				url = get_url_to_form("Fixed Deposit",fd.name)
 				frappe.msgprint("Fixed Deposit - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(fd.name)))
-			self.db_set('status', 'Renewal')
+			self.db_set('status', 'Renewed')
