@@ -8,9 +8,10 @@ from frappe import utils
 
 class FDManagement(Document):
 	def validate(self):
-		if self.maturity_amount:
-			if self.maturity_amount < self.fd_amount:
-				frappe.throw("Matured Amount Can Not be less then  FD Amount")
+		if self.maturity_amount < self.fd_amount:
+			frappe.throw("Matured Amount Can Not be less then  FD Amount")
+		if self.fd_start_date >= self.matured_date:
+			frappe.throw("Matured Date Can Not be less then Or equal FD Start Date")
 	def on_submit(self):
 		if not self.previous_fd:
 			jv = frappe.new_doc("Journal Entry")
@@ -67,8 +68,8 @@ class FDManagement(Document):
 		if self.matured__jv:
 			frappe.throw(f"FD is already Matured </br> <b>#{self.matured__jv}</b> ")
 		if self.matured == 1 and not self.matured__jv :
-			# if self.matured_amount < self.fd_amount:
-			#     frappe.throw("Matured Amount Can Not be less then  FD Amount")
+			if self.matured_amount < self.fd_amount:
+			    frappe.throw("Matured Amount Can Not be less then  FD Amount")
 			jv = frappe.new_doc("Journal Entry")
 			jv.posting_date = self.posting_date
 			jv.voucher_type = "Journal Entry"
@@ -102,6 +103,8 @@ class FDManagement(Document):
 		if self.matured == 1 and self.renewal == 1:
 			frappe.throw("FD is Not Update Renewal and Matured  at a same time")
 		if self.renewal == 1:
+			if self.new_maturity_date <= self.matured_date:
+				frappe.throw("Matured Date Can Not be less then Or equal FD Start Date")
 			fd = frappe.new_doc("FD Management")
 			fd.fd_number = self.fd_number
 			fd.company = self.company
