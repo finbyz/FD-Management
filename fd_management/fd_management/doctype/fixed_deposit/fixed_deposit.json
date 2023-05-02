@@ -1,8 +1,8 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "FD-.#####",
- "creation": "2023-04-24 16:19:47.490961",
+ "autoname": "FD.#####",
+ "creation": "2023-05-02 15:06:59.228575",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -35,9 +35,15 @@
   "renewal_interest_amount",
   "new_maturity_amount",
   "renewal_jv",
-  "status"
+  "status",
+  "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "fd_number",
+   "fieldtype": "Data",
+   "label": "FD Number"
+  },
   {
    "default": "Today",
    "fieldname": "posting_date",
@@ -45,20 +51,53 @@
    "label": "Posting Date"
   },
   {
-   "fieldname": "fd_number",
-   "fieldtype": "Data",
-   "label": "FD Number"
+   "fieldname": "fd_account",
+   "fieldtype": "Link",
+   "label": "FD Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "fd_start_date",
+   "fieldtype": "Date",
+   "label": "FD Start Date"
+  },
+  {
+   "fieldname": "matured_date",
+   "fieldtype": "Date",
+   "label": "Maturity Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "depends_on": "eval:doc.docstatus==1",
+   "fieldname": "matured",
+   "fieldtype": "Check",
+   "label": "Matured",
+   "no_copy": 1,
+   "read_only_depends_on": "eval:doc.status=='Matured'"
+  },
+  {
+   "fieldname": "previous_fd",
+   "fieldtype": "Link",
+   "label": "Previous FD",
+   "no_copy": 1,
+   "options": "Fixed Deposit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_van5s",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
   },
   {
    "fieldname": "bank_account",
    "fieldtype": "Link",
    "label": "Bank Account",
-   "options": "Account"
-  },
-  {
-   "fieldname": "fd_account",
-   "fieldtype": "Link",
-   "label": "FD Account",
    "options": "Account"
   },
   {
@@ -68,28 +107,14 @@
    "options": "Account"
   },
   {
-   "fieldname": "fd_start_date",
-   "fieldtype": "Date",
-   "label": "FD Start Date"
-  },
-  {
    "fieldname": "fd_amount",
    "fieldtype": "Currency",
    "label": "FD Amount"
   },
   {
-   "fieldname": "matured_date",
-   "fieldtype": "Date",
-   "label": "Maturity Date"
-  },
-  {
-   "allow_on_submit": 1,
-   "depends_on": "eval:doc.matured==1",
-   "fieldname": "matured_amount",
+   "fieldname": "maturity_amount",
    "fieldtype": "Currency",
-   "label": "Matured Amount ",
-   "no_copy": 1,
-   "read_only_depends_on": "eval:doc.status=='Matured'"
+   "label": "Maturity Amount"
   },
   {
    "allow_on_submit": 1,
@@ -103,19 +128,29 @@
   },
   {
    "allow_on_submit": 1,
-   "default": "0",
-   "depends_on": "eval:doc.docstatus==1",
-   "fieldname": "matured",
-   "fieldtype": "Check",
-   "label": "Matured",
+   "fieldname": "reference_jv",
+   "fieldtype": "Data",
+   "label": "Reference JV",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "matured_section_section",
+   "fieldtype": "Section Break",
+   "label": "Matured Section"
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.matured==1",
+   "fieldname": "matured_amount",
+   "fieldtype": "Currency",
+   "label": "Matured Amount ",
    "no_copy": 1,
    "read_only_depends_on": "eval:doc.status=='Matured'"
   },
   {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "label": "Company",
-   "options": "Company"
+   "fieldname": "column_break_ug5eq",
+   "fieldtype": "Column Break"
   },
   {
    "allow_on_submit": 1,
@@ -135,28 +170,9 @@
    "read_only": 1
   },
   {
-   "allow_on_submit": 1,
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "in_list_view": 1,
-   "label": "Status",
-   "no_copy": 1,
-   "options": "Running\nMatured\nRenewal\nPadding",
-   "read_only": 1
-  },
-  {
-   "fieldname": "previous_fd",
-   "fieldtype": "Link",
-   "label": "Previous FD",
-   "no_copy": 1,
-   "options": "FD Management",
-   "read_only": 1
-  },
-  {
-   "fieldname": "maturity_amount",
-   "fieldtype": "Currency",
-   "label": "Maturity Amount"
+   "fieldname": "renewal_section_section",
+   "fieldtype": "Section Break",
+   "label": "Renewal Section"
   },
   {
    "allow_on_submit": 1,
@@ -170,29 +186,12 @@
   {
    "allow_on_submit": 1,
    "depends_on": "eval:doc.renewal==1",
-   "fieldname": "renewal_interest_amount",
-   "fieldtype": "Currency",
-   "label": "Renewal Interest Amount",
+   "fieldname": "new_maturity_date",
+   "fieldtype": "Date",
+   "label": "New Maturity Date",
+   "mandatory_depends_on": "eval:doc.renewal==1",
    "no_copy": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_van5s",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "matured_section_section",
-   "fieldtype": "Section Break",
-   "label": "Matured Section"
-  },
-  {
-   "fieldname": "renewal_section_section",
-   "fieldtype": "Section Break",
-   "label": "Renewal Section"
-  },
-  {
-   "fieldname": "column_break_ug5eq",
-   "fieldtype": "Column Break"
+   "read_only_depends_on": "eval:doc.status=='Renewal'"
   },
   {
    "fieldname": "column_break_kixui",
@@ -200,21 +199,12 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "reference_jv",
-   "fieldtype": "Data",
-   "label": "Reference JV",
+   "depends_on": "eval:doc.renewal==1",
+   "fieldname": "renewal_interest_amount",
+   "fieldtype": "Currency",
+   "label": "Renewal Interest Amount",
    "no_copy": 1,
    "read_only": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "depends_on": "eval:doc.renewal==1",
-   "fieldname": "new_maturity_date",
-   "fieldtype": "Date",
-   "label": "New Maturity Date",
-   "mandatory_depends_on": "eval:doc.renewal==1",
-   "no_copy": 1,
-   "read_only_depends_on": "eval:doc.status=='Renewal'"
   },
   {
    "allow_on_submit": 1,
@@ -233,15 +223,35 @@
    "label": "Renewal JV",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Running\nMatured\nRenewal\nPadding",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Fixed Deposit",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-02 14:22:13.542441",
+ "modified": "2023-05-02 15:06:59.228575",
  "modified_by": "Administrator",
  "module": "Fd Management",
- "name": "FD Management",
+ "name": "Fixed Deposit",
  "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [

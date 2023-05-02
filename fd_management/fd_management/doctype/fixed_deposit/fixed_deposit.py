@@ -6,7 +6,7 @@ from frappe.model.document import Document
 from frappe.utils import get_url_to_form
 from frappe import utils
 
-class FDManagement(Document):
+class FixedDeposit(Document):
 	def validate(self):
 		if self.maturity_amount < self.fd_amount:
 			frappe.throw("Matured Amount Can Not be less then  FD Amount")
@@ -34,7 +34,7 @@ class FDManagement(Document):
 			else:
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
-			frappe.db.set_value('FD Management', self.name, 'reference_jv', jv.name)
+			frappe.db.set_value('Fixed Deposit', self.name, 'reference_jv', jv.name)
 			frappe.db.commit()
 		if self.previous_fd:
 			jv = frappe.new_doc("Journal Entry")
@@ -47,11 +47,11 @@ class FDManagement(Document):
 			})
 			jv.append('accounts', {
 				'account': self.fd_account,
-				'credit_in_account_currency': frappe.db.get_value("FD Management",self.previous_fd,'fd_amount')
+				'credit_in_account_currency': frappe.db.get_value("Fixed Deposit",self.previous_fd,'fd_amount')
 			})
 			jv.append('accounts', {
 				'account': self.interest_account,
-				'credit_in_account_currency':frappe.db.get_value("FD Management",self.previous_fd,'renewal_interest_amount')
+				'credit_in_account_currency':frappe.db.get_value("Fixed Deposit",self.previous_fd,'renewal_interest_amount')
 			})  
 			try:
 				jv.save()
@@ -61,8 +61,8 @@ class FDManagement(Document):
 			else:
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
-			frappe.db.set_value('FD Management', self.name, 'reference_jv', jv.name)
-			frappe.db.set_value('FD Management', self.previous_fd, 'renewal_jv', jv.name)
+			frappe.db.set_value('Fixed Deposit', self.name, 'reference_jv', jv.name)
+			frappe.db.set_value('Fixed Deposit', self.previous_fd, 'renewal_jv', jv.name)
 			frappe.db.commit()
 
 	def on_update_after_submit(self):
@@ -95,8 +95,8 @@ class FDManagement(Document):
 			else:
 				url = get_url_to_form("Journal Entry",jv.name)
 				frappe.msgprint("Journal Entry - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(jv.name)))
-			# frappe.db.set_value('FD Management', self.name, 'matured__jv', jv.name)
-			# frappe.db.set_value('FD Management', self.name, 'status', 'Matured')
+			# frappe.db.set_value('Fixed Deposit', self.name, 'matured__jv', jv.name)
+			# frappe.db.set_value('Fixed Deposit', self.name, 'status', 'Matured')
 			# frappe.db.commit()
 			self.db_set('matured__jv', jv.name)
 			self.db_set('status', 'Matured')
@@ -106,7 +106,7 @@ class FDManagement(Document):
 		if self.renewal == 1:
 			if self.new_maturity_date <= self.matured_date:
 				frappe.throw("Matured Date Can Not be less then Or equal FD Start Date")
-			fd = frappe.new_doc("FD Management")
+			fd = frappe.new_doc("Fixed Deposit")
 			fd.fd_number = self.fd_number
 			fd.company = self.company
 			fd.bank_account = self.bank_account
@@ -123,7 +123,6 @@ class FDManagement(Document):
 			except Exception as e:
 				frappe.throw(str(e))
 			else:
-				url = get_url_to_form("FD Management",fd.name)
-				frappe.msgprint("FD Management - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(fd.name)))
+				url = get_url_to_form("Fixed Deposit",fd.name)
+				frappe.msgprint("Fixed Deposit - <a href='{url}'>{doc}</a> is created".format(url=url, doc=frappe.bold(fd.name)))
 			self.db_set('status', 'Renewal')
-			

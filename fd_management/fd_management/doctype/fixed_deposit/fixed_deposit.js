@@ -1,7 +1,7 @@
 // Copyright (c) 2023, finbyx and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('FD Management', {
+frappe.ui.form.on('Fixed Deposit', {
 	refresh: function(frm) {
 		frm.set_query('interest_account', function(doc) {
 				return {
@@ -64,5 +64,4 @@ frappe.ui.form.on('FD Management', {
 		frm.set_value('renewal_interest_amount',(frm.doc.renewal_amount - frm.doc.fd_amount));
 	},
 
-
-});	
+});

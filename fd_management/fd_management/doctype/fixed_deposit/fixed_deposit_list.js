@@ -1,4 +1,4 @@
-frappe.listview_settings['FD Management'] = {
+frappe.listview_settings['Fixed Deposit'] = {
 
 	add_fields: ['status'],
 	get_indicator: function(doc) {
