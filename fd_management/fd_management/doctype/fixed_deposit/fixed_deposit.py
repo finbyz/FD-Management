@@ -101,9 +101,9 @@ class FixedDeposit(Document):
 			self.db_set('matured__jv', jv.name)
 			self.db_set('status', 'Matured')
 		
-		if self.matured == 1 and self.renewal == 1:
-			frappe.throw("FD is Not Update Renewal and Matured  at a same time")
-		if self.renewal == 1:
+		if self.matured == 1 and self.renewed == 1:
+			frappe.throw("FD is Not Update renewed and Matured  at a same time")
+		if self.renewed == 1:
 			if self.new_maturity_date <= self.matured_date:
 				frappe.throw("Matured Date Can Not be less then Or equal FD Start Date")
 			fd = frappe.new_doc("Fixed Deposit")
