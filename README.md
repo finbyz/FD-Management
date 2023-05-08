@@ -26,7 +26,15 @@ A fixed deposit (FD) is a financial instrument provided by banks or non-bank fin
 3.  After updating the system will create a journal entry with the Fixed Deposit Account debited with the new Renewal Amount and credited with the Principal Amount. The difference between the two will be credited to the FD Interest Account and System will create new Fixed deposit with reference of previous FD.<br/>
 
 
+## Documentation
 
+Complete documentation for FD Management [here](https://finbyz.tech/fd-management)
+
+## License
+
+GNU GPL V3. (See [license.txt](https://github.com/finbyz/FD-Management/blob/main/license.txt) for more information).
+
+The FD Management code is licensed as GNU General Public License (v3) and the copyright is owned by FinByz Tech Pvt Ltd.
  
  
 
