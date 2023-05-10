@@ -18,7 +18,7 @@ A fixed deposit (FD) is a financial instrument provided by banks or non-bank fin
 4.	After submission, the system will create a journal entry with the Bank Account credited and the Fixed Deposit account debited.<br/>
 
 
-![New FD - 16-to-26](https://github.com/finbyz/FD-Management/assets/18363620/2d5d4c90-d11b-47b1-93e3-522e7702da40)
+![New FD - 16-to-26](https://user-images.githubusercontent.com/18363620/237381812-d2f70b5b-2c9b-4388-ac10-7c52fac2651d.gif)
 
 
 **`When the Fixed Deposit matures`**:
@@ -28,7 +28,7 @@ A fixed deposit (FD) is a financial instrument provided by banks or non-bank fin
 3.  After updating the system will create a journal entry with the Bank Account debited, Fixed Deposit Account credited, and Interest Account credited.<br/>
 
 
-![Matured - 45-to-52](https://github.com/finbyz/FD-Management/assets/18363620/016c9dd2-1edc-4320-a8c1-2e3e07d99458)
+![Matured - 45-to-52](https://user-images.githubusercontent.com/18363620/237382074-e801e593-7f64-4002-96f3-df2ea156118a.gif)
 
 
 **`When The Fixed Deposit Renewed`**:
@@ -38,7 +38,7 @@ A fixed deposit (FD) is a financial instrument provided by banks or non-bank fin
 3.  After updating the system will create a journal entry with the Fixed Deposit Account debited with the new Renewal Amount and credited with the Principal Amount. The difference between the two will be credited to the FD Interest Account and System will create new Fixed deposit with reference of previous FD.<br/>
 
 
-![Renewed - 68-to-78](https://github.com/finbyz/FD-Management/assets/18363620/67bb92fc-babc-4ff0-9de1-43d7e224cb7e)
+![Renewed - 68-to-78](https://user-images.githubusercontent.com/18363620/237382730-f7f2c2f5-6592-4204-bb14-647a969079aa.gif)
 
 
 ## Documentation
