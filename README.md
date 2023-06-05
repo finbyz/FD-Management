@@ -43,7 +43,7 @@ A fixed deposit (FD) is a financial instrument provided by banks or non-bank fin
 
 ## Documentation
 
-Complete documentation for FD Management [here](https://finbyz.tech/fd-management)
+Complete documentation for FD Management [here](https://finbyz.tech/fd-management-erpnext)
 
 ## License
 
