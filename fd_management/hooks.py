@@ -5,7 +5,7 @@ app_title = "Fd Management"
 app_publisher = "finbyx"
 app_description = "fd management"
 app_email = "info@finbyz.tech"
-app_license = "MIT"
+app_license = "GNU General Public License v3 (GPLv3)"
 
 # Includes in <head>
 # ------------------
