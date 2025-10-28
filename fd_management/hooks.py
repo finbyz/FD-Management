@@ -2,7 +2,7 @@ from . import __version__ as app_version
 
 app_name = "fd_management"
 app_title = "Fd Management"
-app_publisher = "finbyx"
+app_publisher = "Finbyz Tech PVT LTD"
 app_description = "fd management"
 app_email = "info@finbyz.tech"
 app_license = "GPL-3.0"
